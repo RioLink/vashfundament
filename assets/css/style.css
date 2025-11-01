@@ -468,8 +468,6 @@ a.phone-cta{ font-size:12px; color: var(--c-primary); }
 .slick-prev { left: -10px; }
 .slick-next { right: -10px; }
 
-
-
 /* ----------------------------------
    12) REVIEWS
    ---------------------------------- */
@@ -543,15 +541,11 @@ a.phone-cta{ font-size:12px; color: var(--c-primary); }
 .blue{ color:#2274ff; }
 .hidden{ display:none !important; }
 .max-w-prose{ max-width: 60ch; }
-
-/* Spacing between sections */
 section + section{ border-top: 1px solid var(--c-line); }
 section{ position: relative; }
 section::after{
   content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px; background: linear-gradient(90deg, transparent, var(--c-line), transparent);
 }
-
-/* Subtle section headings underline */
 .section-title{ position: relative; display:block; }
 .section-title::after{
   content:""; position:absolute; left:50%; transform:translateX(-50%); bottom:-12px;
@@ -609,45 +603,25 @@ section::after{
    ---------------------------------- */
 hr{ border:0; border-top:1px solid var(--c-line); margin: 24px 0; }
 
-/* soft fade-in on section enter */
 @keyframes fadeUp{
   from { opacity:.0; transform: translateY(10px); }
   to   { opacity:1; transform: translateY(0); }
 }
 section{ animation: fadeUp .6s var(--t-base) both; }
-
-/* Small decorative bullet for lists inside content blocks */
 ol, ul{ padding-left: 1.1rem; }
 .steps ol, .about ol, .about ul{ padding-left: 1rem; }
 li::marker{ color: var(--c-primary); }
-
-/* Make links in long texts obvious on hover */
 p a:hover{ text-decoration: underline; color: var(--c-primary-700); }
 
 /* ----------------------------------
    18) SECTION-SPECIFIC TWEAKS TO MATCH MOCKUPS
    ---------------------------------- */
-/* Header density */
 .site-header .container{ max-width: var(--container-wide); }
-/* Promo slim strip already colored inline, just keep height */
 .promo{ border-bottom: 1px solid rgba(255,255,255,.08); }
-
-/* Hero alignment */
 .hero-text .btn-cta{ margin-top: 6px; }
-
-/* Why section round images -> already */
 .why .btn{ margin-top: 6px; }
-
-/* Steps button alignment */
 .steps .btn-cta{ margin-top: 10px; }
-
-/* Reviews spacing */
 .reviews .btn{ margin-top: 6px; }
-
-/* About grid weights already set via .split.reverse */
-
-/* Contacts button already centered via .center container */
-
 /* ----------------------------------
    END OF FILE
    ---------------------------------- */
