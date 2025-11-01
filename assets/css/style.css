@@ -198,7 +198,7 @@ body{
 .site-header{
   background:#fff;
   position: sticky;
-  top:0; z-index:1000;
+  top:0;
   box-shadow: 0 1px 0 var(--c-border);
 }
 .header-row{
@@ -625,3 +625,4 @@ p a:hover{ text-decoration: underline; color: var(--c-primary-700); }
 /* ----------------------------------
    END OF FILE
    ---------------------------------- */
+
