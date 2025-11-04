@@ -1,0 +1,100 @@
+/* ===== FORM PAGE ===== */
+body {
+  background: #f1f1f1;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.form-wrapper {
+  background: #e6e6e6;
+  border-radius: 20px;
+  padding: 50px 60px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.contact-form label {
+  text-align: left;
+  font-weight: 600;
+  color: #444;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #bbb;
+  background: #fff;
+  font-size: 16px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ec8a4a;
+  box-shadow: 0 0 5px rgba(236, 138, 74, 0.3);
+  outline: none;
+}
+
+.btn-send {
+  background: #ec8a4a;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.btn-send:hover {
+  background: #f6a463;
+  box-shadow: 0 6px 20px rgba(236, 138, 74, 0.4);
+}
+
+.btn-back {
+  display: inline-block;
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn-back:hover {
+  color: #ec8a4a;
+}
+
+@media (max-width: 480px) {
+  .form-wrapper {
+    padding: 35px 25px;
+  }
+  h1 {
+    font-size: 24px;
+  }
+}
