@@ -15,6 +15,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
 </head>
 <body>
 <!-- ===== Header ===== -->
@@ -141,7 +143,7 @@
           <h3>Ремонт у квартирах</h3>
           <p>Робимо акцент на якість і сучасний дизайн</p>
           <div class="meta-row"><span class="meta">137 зданих об’єктів</span></div>
-          <a href="form.html" class="btn btn-ghost">Отримати пропозицію</a>
+          <a href="form.html" class="btn btn-cta">Отримати пропозицію</a>
         </div>
       </article>
       <article class="card card-v">
@@ -152,7 +154,7 @@
             Повний ремонт приміщення площею <b>50 м²</b> для сучасної кавʼярні
           </p>
           <div class="meta-row"><span class="meta">Здано у 2024 році</span></div>
-          <a href="form.html" class="btn btn-ghost">Отримати подібний проект</a>
+          <a href="form.html" class="btn btn-cta">Отримати подібний проект</a>
         </div>
       </article>
 
@@ -382,7 +384,7 @@ $(function () {
     slidesToScroll: 1,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3500,
     arrows: true,
     prevArrow: '<button type="button" class="slick-prev">‹</button>',
     nextArrow: '<button type="button" class="slick-next">›</button>',
@@ -394,16 +396,26 @@ $(function () {
 
   // Fancybox 4
   Fancybox.bind("[data-fancybox='gallery']", {
-    animated: true,
+    dragToClose: true,
+    placeFocusBack: false,
     showClass: "fancybox-fadeIn",
     hideClass: "fancybox-fadeOut",
-    dragToClose: true,
-    Thumbs: { autoStart: true },
-    Toolbar: {
-      display: ["zoom", "slideshow", "thumbs", "close"],
-    },
-    placeFocusBack: false,
-    loop: true,
+    closeButton: false,
+    Toolbar: false,
+    Thumbs: { autoStart: false },
+    Image: { zoom: true },
+    on: {
+      reveal: (fancybox, slide) => {
+        if (!document.querySelector('.custom-close')) {
+          const btn = document.createElement('button');
+          btn.className = 'custom-close';
+          btn.innerHTML = '×';
+          btn.title = 'Закрити';
+          btn.onclick = () => fancybox.close();
+          document.querySelector('.fancybox__container').appendChild(btn);
+        }
+      }
+    }
   });
 });
 
