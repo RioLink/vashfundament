@@ -210,37 +210,149 @@ body{
 /* ----------------------------------
    06) HEADER BAR
    ---------------------------------- */
-.site-header{
-  background:#fff;
+.site-header {
+  background: #fff;
   position: sticky;
-  top:0;
+  top: 0;
   box-shadow: 0 1px 0 var(--c-border);
 }
-.header-row{
-  display:flex;
-  align-items:center;
-  gap: 18px;
-  padding: 14px 0;
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 24px;
+  padding: 16px 0;
+  text-align: center;
 }
-.h-logo img{ height: 44px; width:auto; border-radius: 6px; }
 
-.info-box, .phone-box{
-  display:flex; align-items:center; gap:15px;
-  padding: 8px 12px; border-radius: 12px;
-  background:#fff;
+.h-logo img {
+  height: 48px;
+  width: auto;
+  border-radius: 6px;
 }
-.header-row .icon{ width:40px; height:40px; opacity:.95; }
-.info-text{ font-size:15px; color:#2e3233; }
-.h-label{ font-size:13px; color:var(--c-muted-2); }
-.h-icons{ display:flex; gap:10px; }
-.h-icons img{ width:30px; height:30px; filter: saturate(.2); transition: filter var(--t-fast), transform var(--t-fast); }
-.h-icons a:hover img{ filter: none; transform: translateY(-1px); }
-.h-socials .h-icons img{ width:30px; height:30px; }
+.info-box,
+.phone-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: #fff;
+  justify-content: center;
+}
 
-.phone-links{ display:flex; flex-direction:column; }
-a.phone{ font-weight:800; color:#111; }
-a.phone-cta{ font-size:12px; color: var(--c-primary); }
+.header-row .icon {
+  width: 34px;
+  height: 34px;
+  opacity: 0.9;
+}
+
+.info-text {
+  font-size: 15px;
+  color: #2e3233;
+}
+
+.h-label {
+  font-size: 13px;
+  color: var(--c-muted-2);
+}
+
+.h-icons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.h-icons img {
+  width: 30px;
+  height: 30px;
+  filter: saturate(0.3);
+  transition: filter var(--t-fast), transform var(--t-fast);
+}
+
+.h-icons a:hover img {
+  filter: none;
+  transform: translateY(-1px);
+}
+
+.phone-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a.phone {
+  font-weight: 800;
+  color: #111;
+  font-size: 16px;
+}
+
+a.phone-cta {
+  font-size: 12px;
+  color: var(--c-primary);
+}
+
+/* ==== ADAPTIVE ==== */
+@media (max-width: 900px) {
+  .site-header .container.header-row {
+    justify-content: center;
+    gap: 10px 16px;
+  }
+  .header-row .h-label { font-size: 13px; }
+  .h-icons img { width: 28px; height: 28px; }
+  .phone-links .phone { font-size: 15px; }
+}
+@media (max-width: 680px) {
+  .site-header .container.header-row{
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-template-areas:
+      "logo  logo   logo"
+      "mess  social phone";
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px 18px;
+    padding-block: 10px;
+  }
+  .h-logo{ grid-area: logo; justify-self: center; }
+  .h-logo img{ height: 48px; width: auto; }
+  .h-mess{ grid-area: mess; justify-self: center; }
+  .h-socials{ grid-area: social; justify-self: center; }
+  .h-phone{ grid-area: phone; justify-self: center; }
+  .h-address,
+  .h-hours{ display:none !important; }
+  .h-mess, .h-socials, .h-phone{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .h-label{ display:none; }
+  .h-icons{ gap: 10px; }
+  .h-icons img{ width: 26px; height: 26px; filter: saturate(.25); }
+  .h-icons a:hover img{ filter: none; transform: translateY(-1px); }
+  .h-phone.phone-box{
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    gap: 6px;
+  }
+  .h-phone .icon{ display: none; }
+  .phone-links{
+    display:flex; flex-direction:column; align-items:center; line-height:1.2;
+  }
+  .phone-links .phone{ font-size: 15px; font-weight: 800; color:#111; }
+  .phone-links .phone-cta{ font-size: 11px; color: var(--c-primary); }
+}
+@media (max-width: 400px){
+  .h-icons img{ width: 24px; height: 24px; }
+  .phone-links .phone{ font-size: 14px; }
+}
+
 
 /* ----------------------------------
    07) PROMO STRIP
@@ -491,21 +603,31 @@ a.phone-cta{ font-size:12px; color: var(--c-primary); }
   }
 }
 
-/* ==== FIX GALLERY FULL WIDTH ==== */
+/* ==== FULL-WIDTH GALLERY FIXED ==== */
 .gallery {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   background: #f4f7f8;
-  padding: 60px 0 50px;
+  padding: 100px 0 70px;
+  position: relative;
+  z-index: 2;
 }
 
-.gallery-project {
-  width: 100%;
-  padding: 30px 0 10px;
+.gallery .section-title {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 30px;
+  color: #222;
+}
+
+.gallery .section-subtitle {
+  text-align: center;
+  color: #555;
+  margin-bottom: 40px;
 }
 
 .gallery-slider {
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   position: relative;
 }
@@ -517,9 +639,9 @@ a.phone-cta{ font-size:12px; color: var(--c-primary); }
 
 .gallery-slider img {
   width: 100%;
-  height: 420px;
+  height: 470px;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: 18px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
@@ -529,7 +651,7 @@ a.phone-cta{ font-size:12px; color: var(--c-primary); }
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
 }
 
-/* ==== Стрелки slick ==== */
+/* ==== Arrows ==== */
 .slick-prev,
 .slick-next {
   position: absolute;
@@ -539,7 +661,7 @@ a.phone-cta{ font-size:12px; color: var(--c-primary); }
   height: 56px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.8);
-  color: #fff;
+  color: #000000;
   font-size: 30px;
   font-weight: 700;
   border: none;
@@ -547,103 +669,53 @@ a.phone-cta{ font-size:12px; color: var(--c-primary); }
   z-index: 5;
   transition: all 0.3s ease;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slick-prev:hover,
 .slick-next:hover {
   background: #000;
-  transform: translateY(-50%) scale(1.05);
-}
-
-.slick-prev {
-  left: -70px;
-}
-.slick-next {
-  right: -70px;
-}
-
-@media (max-width: 1200px) {
-  .gallery-slider img { height: 360px; }
-  .slick-prev { left: -40px; }
-  .slick-next { right: -40px; }
-}
-
-@media (max-width: 768px) {
-  .gallery-slider img { height: 280px; }
-  .slick-prev, .slick-next {
-    width: 44px;
-    height: 44px;
-    font-size: 24px;
-  }
-  .slick-prev { left: -20px; }
-  .slick-next { right: -20px; }
-}
-/* ==== FULL-WIDTH GALLERY (без серого фона, ровные фото, цветные стрелки) ==== */
-.gallery {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  background: transparent !important;
-  padding: 60px 0 50px;
-}
-
-.gallery-slider {
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-}
-
-.gallery-slider img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  border-radius: 18px;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-.slick-prev,
-.slick-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #333 !important;
-  color: #fff !important;
-  font-size: 28px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  z-index: 5;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-}
-
-.slick-prev:hover,
-.slick-next:hover {
-  background: #000 !important;
   transform: translateY(-50%) scale(1.08);
 }
 
-.slick-prev { left: -60px; }
-.slick-next { right: -60px; }
-
-@media (max-width: 1200px) {
-  .gallery-slider img { height: 360px; }
-  .slick-prev { left: -35px; }
-  .slick-next { right: -35px; }
+.slick-prev::before,
+.slick-next::before {
+  content: "";
 }
+
+
+/* ==== Bottom text ==== */
+.gallery .center {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.gallery-desc {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 1200px) {
+  .gallery-slider img { height: 400px; }
+  .slick-prev { left: -45px; }
+  .slick-next { right: -45px; }
+}
+
 @media (max-width: 768px) {
-  .gallery-slider img { height: 280px; }
+  .gallery-slider img { height: 300px; }
   .slick-prev, .slick-next {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     font-size: 22px;
   }
   .slick-prev { left: -20px; }
   .slick-next { right: -20px; }
 }
+
 
 
 /* ==== DARK FURNITURE PORTFOLIO ==== */
