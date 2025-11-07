@@ -1,41 +1,52 @@
-// Burger (можно расширить под мобильное меню)
-document.querySelectorAll('.burger').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const info = document.querySelector('.header-info');
-    if(!info) return;
-    const visible = getComputedStyle(info).display !== 'none';
-    info.style.display = visible ? 'none' : 'flex';
+document.addEventListener("DOMContentLoaded", function () {
+  // ==== Gallery sliders ====
+  $('.gallery-slider').each(function (i) {
+    $(this).slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 3500,
+      arrows: true,
+      prevArrow: '<button type="button" class="slick-prev">‹</button>',
+      nextArrow: '<button type="button" class="slick-next">›</button>',
+      responsive: [
+        { breakpoint: 1024, settings: { slidesToShow: 2 } },
+        { breakpoint: 700, settings: { slidesToShow: 1 } }
+      ]
+    });
+
+    // fancybox group names
+    const groupName = 'gal-' + i;
+    $(this).find('a').attr('data-fancybox', groupName);
+  });
+  // ==== Fancybox ====
+  Fancybox.bind('[data-fancybox^="gal-"]', {
+    dragToClose: true,
+    Thumbs: { autoStart: false },
+    Toolbar: { display: ["close"] }
+  });
+  // ==== Furniture slider ====
+  $(".furniture-slider").slick({
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 700,
+    slidesToShow: 1,
+    adaptiveHeight: true,
+    arrows: false,
+    fade: true,
+    pauseOnHover: true
+  });
+  // ==== Lazy load fade-in ====
+  const imgs = document.querySelectorAll("img[loading='lazy'], img");
+  imgs.forEach(img => {
+    if (img.complete) {
+      img.classList.add("loaded");
+    } else {
+      img.addEventListener("load", () => img.classList.add("loaded"));
+      img.addEventListener("error", () => img.classList.add("loaded"));
+    }
   });
 });
-
-// Простой слайдер (горизонтальная прокрутка)
-(function(){
-  const track = document.getElementById('galleryTrack');
-  if(!track) return;
-  const prev = document.querySelector('.slide-btn.prev');
-  const next = document.querySelector('.slide-btn.next');
-  const step = 320;
-
-  prev && prev.addEventListener('click', ()=> track.scrollBy({left: -step, behavior: 'smooth'}));
-  next && next.addEventListener('click', ()=> track.scrollBy({left:  step, behavior: 'smooth'}));
-})();
-
-// Служебная функция конверсії (как в исходнике)
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
-  if (typeof gtag === 'function') {
-    gtag('event', 'conversion', {
-      'send_to': '/',
-      'value': 25.0,
-      'currency': 'UAH',
-      'event_callback': callback
-    });
-  } else {
-    callback();
-  }
-  return false;
-}
