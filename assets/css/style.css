@@ -755,7 +755,15 @@ section::after{
   .h-logo{ order:-1; width:100%; display:flex; justify-content:center; }
   .info-box, .h-mess, .h-socials, .phone-box{ padding: 6px 10px; }
   .hero-row{ grid-template-columns: 1fr; display:grid; }
-  .hero-img img{ width: 520px; }
+  .hero-img img {
+    width: clamp(380px, 60vw, 480px);
+    max-width: 90%;
+    aspect-ratio: 1 / 1;
+    border-radius: 999px;
+    object-fit: cover;
+    box-shadow: var(--shadow-lg);
+  }
+
   .cards.four{ grid-template-columns: repeat(2, 1fr); }
   .split, .split.reverse{ grid-template-columns: 1fr; }
   .reviews-grid{ grid-template-columns: 1fr 1fr; }
@@ -764,56 +772,45 @@ section::after{
   .card-v{ grid-template-columns: 120px 1fr; }
   .card-v img{ width:110px; height:110px; }
   .photo{ height: 460px; }
-}
-/* ==== MOBILE HEADER FIX (до 680px) ==== */
-@media (max-width: 680px) {
+  .h-label { display: none !important; }
+  .h-logo, .h-mess, .h-socials {
+    display: contents !important;
+  }
   .site-header .container.header-row {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas:
-      "mess social phone";
-    align-items: center;
-    justify-items: center;
-    text-align: center;
-    gap: 12px 18px;
-    padding-block: 10px;
+    gap: 10px;
+    padding: 10px 0;
   }
-  .h-logo {
-    display: none !important;
-  }
-  .h-address,
-  .h-hours {
-    display: none !important;
-  }
-  .h-mess   { grid-area: mess; }
-  .h-socials{ grid-area: social; }
-  .h-phone  { grid-area: phone; }
 
-  .h-mess, .h-socials, .h-phone {
-    display: inline-flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+  .h-logo img {
+    height: 50px;
+    width: auto;
+    border-radius: 6px;
   }
-  .h-label { display: none; }
-  .h-icons { gap: 10px; }
+
+  .h-logo .h-mess .h-icons,
+  .h-socials .h-icons {
+    display: flex !important;
+    gap: 10px;
+  }
+
   .h-icons img {
     width: 30px;
     height: 30px;
-    filter: saturate(.3);
+    filter: saturate(.4);
     transition: transform .2s ease, filter .2s ease;
   }
   .h-icons a:hover img {
     filter: none;
     transform: translateY(-1px);
   }
-  .h-phone.phone-box {
+  .h-phone {
+    display: flex !important;
+    flex-direction: column;
+    gap: 3px;
     background: transparent;
-    border: 0;
+    border: none;
     box-shadow: none;
     padding: 0;
-    gap: 6px;
   }
   .h-phone .icon { display: none; }
   .phone-links {
@@ -823,13 +820,88 @@ section::after{
     line-height: 1.2;
   }
   .phone-links .phone {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 800;
     color: #111;
   }
   .phone-links .phone-cta {
-    font-size: 11px;
+    font-size: 15px;
     color: var(--c-primary);
+    margin-top: 1px;
+
+  }
+}
+/* ==== MOBILE HEADER FIX (до 576px) ==== */
+@media (max-width: 576px) {
+  .h-label { display: none !important; }
+  .h-logo, .h-mess, .h-socials {
+    display: contents !important;
+  }
+    .hero-img img {
+    width: clamp(280px, 75vw, 360px);
+    max-width: 95%;
+    aspect-ratio: 1 / 1;
+    border-radius: 999px;
+    object-fit: cover;
+    box-shadow: var(--shadow-lg);
+  }
+  .site-header .container.header-row {
+    gap: 8px;
+    padding: 8px 0;
+  }
+
+  .h-logo img {
+    height: 38px;
+    width: auto;
+    border-radius: 6px;
+  }
+
+  .h-logo .h-mess .h-icons,
+  .h-socials .h-icons {
+    display: flex !important;
+    gap: 5px;
+  }
+
+  .h-icons img {
+    width: 28px;
+    height: 28px;
+    filter: saturate(.4);
+    transition: transform .2s ease, filter .2s ease;
+  }
+  .h-icons a:hover img {
+    filter: none;
+    transform: translateY(-1px);
+  }
+  .h-phone {
+    display: flex !important;
+    flex-direction: column;
+    gap: 3px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .h-phone .icon { display: none; }
+  .phone-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.2;
+  }
+  .phone-links .phone {
+    font-size: 14px;
+    font-weight: 800;
+    color: #111;
+  }
+  .phone-links .phone-cta {
+    font-size: 15px;
+    color: var(--c-primary);
+    margin-top: 1px;
+
+  }
+  .h-address,
+  .h-hours {
+    display: none !important;
   }
   .cards.four {
     grid-template-columns: 1fr !important;
