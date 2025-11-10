@@ -837,7 +837,7 @@ section::after{
   .h-label { display: none !important; }
   .h-logo, .h-mess, .h-socials {
     display: contents !important;
-    gap: 2px;
+    gap: 5px;
   }
     .hero-img img {
     width: clamp(280px, 75vw, 360px);
@@ -848,22 +848,22 @@ section::after{
     box-shadow: var(--shadow-lg);
   }
   .site-header .container.header-row {
-    gap: 2px;
-    padding: 2px 0;
+    gap: 5px;
+    padding: 5px 0;
   }
   .h-logo img {
-    height: 30px;
-    width: 60px;
+    height: 35px;
+    width: 70px;
     border-radius: 6px;
   }
   .h-logo .h-mess .h-icons,
   .h-socials .h-icons {
     display: flex !important;
-    gap: 2px;
+    gap: 5px;
   }
   .h-icons img {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     filter: saturate(.4);
     transition: transform .2s ease, filter .2s ease;
   }
@@ -888,12 +888,12 @@ section::after{
     line-height: 1.2;
   }
   .phone-links .phone {
-    font-size: 8px;
+    font-size: 10px;
     font-weight: 800;
     color: #111;
   }
   .phone-links .phone-cta {
-    font-size: 8px;
+    font-size: 10px;
     color: var(--c-primary);
   }
   .h-address,
