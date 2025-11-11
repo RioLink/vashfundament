@@ -723,6 +723,30 @@ a.phone-cta{ font-size:12px; color: var(--c-primary); }
   border:1px solid var(--c-border);
   box-shadow: var(--shadow-md);
 }
+@media (max-width: 576px) {
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .contact-item,
+  .contact-item.wide {
+    grid-column: span 1 !important;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .contact-item .icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .contact-item .contact-main a,
+  .contact-item .muted {
+    font-size: 15px;
+  }
+}
 /* ----------------------------------
    15) UTILITIES
    ---------------------------------- */
